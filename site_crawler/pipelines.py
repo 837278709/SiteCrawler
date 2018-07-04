@@ -10,7 +10,7 @@ import pymongo
 
 class MongoPipeline(object):
 
-    collection_name = 'scrapy_items'
+    collection_name = 'galnet_news'
 
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
@@ -37,5 +37,6 @@ class MongoPipeline(object):
 
 class SiteCrawlerPipeline(object):
     def process_item(self, item, spider):
-        item['paragraph_text'] = item.get('paragraph_text').rstrip('\r')
+        item['paragraph_text'] = list(map(
+            lambda line: line.rstrip('\r'), item.get('paragraph_text')))
         return item

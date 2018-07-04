@@ -15,6 +15,7 @@ class SiteCrawlerItem(scrapy.Item):
 
 
 class NewsParagraph(scrapy.Item):
+    title = scrapy.Field()
     paragraph_text = scrapy.Field()
-    paragraph_number = scrapy.Field()
-#     last_updated = scrapy.Field(serializer=str)
+    date = scrapy.Field()
+    last_updated = scrapy.Field(serializer=str)
