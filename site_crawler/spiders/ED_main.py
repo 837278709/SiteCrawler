@@ -13,9 +13,10 @@ class EdMainSpider(scrapy.Spider):
     def parse(self, response):
         l = ItemLoader(item=NewsParagraph(), response=response)
         l.add_xpath(
-            'title', '/html/body/div[2]/div/div[1]/div[2]/div[1]/h3[1]/text()')
+            'title', '/html[1]/body[1]/div[2]/div[1]/div[3]/div[1]/div[2]/h3[1]/text()')
         l.add_xpath(
-            'date', '/html/body/div[2]/div/div[1]/div[2]/div[1]/h3[1]/div[1]/text()')
+            'date', '/html[1]/body[1]/div[2]/div[1]/div[3]/div[1]/div[2]/h3[1]/div[1]/text()')
         l.add_css('paragraph_text', 'div.clear > p::text')
         l.add_value('last_updated', datetime.today())
-        return l.load_item()
+        rv = l.load_item()
+        return rv
