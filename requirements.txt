@@ -1,2 +1,3 @@
 pymongo
 scrapy
+scrapy-redis

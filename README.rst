@@ -25,3 +25,9 @@ Crawl
 From within your environment, just run::
 
 	$ scrapy crawl ED_main
+
+Requirements
+=================
+
+* Redis
+* MongoDB
